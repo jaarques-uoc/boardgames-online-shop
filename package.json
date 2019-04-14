@@ -1,7 +1,7 @@
 {
   "name": "boardgames-online-shop",
   "version": "0.1.0",
-  "homepage": "https://gihub.com/jaarques-uoc/boardgames-online-shop.github.io.git",
+  "homepage": "https://jaarques-uoc.github.io",
   "private": true,
   "dependencies": {
     "gh-pages": "^2.0.1",
