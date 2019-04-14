@@ -1,14 +1,14 @@
 {
-  "main.css": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/css/main.e9f58245.chunk.css",
-  "main.js": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/js/main.54c3b532.chunk.js",
-  "main.js.map": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/js/main.54c3b532.chunk.js.map",
-  "runtime~main.js": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/js/runtime~main.b9afe516.js",
-  "runtime~main.js.map": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/js/runtime~main.b9afe516.js.map",
-  "static/js/2.6efc73d3.chunk.js": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/js/2.6efc73d3.chunk.js",
-  "static/js/2.6efc73d3.chunk.js.map": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/js/2.6efc73d3.chunk.js.map",
-  "index.html": "/jaarques-uoc/boardgames-online-shop.github.io.git/index.html",
-  "precache-manifest.76d616986d97720c0abc91596a637786.js": "/jaarques-uoc/boardgames-online-shop.github.io.git/precache-manifest.76d616986d97720c0abc91596a637786.js",
-  "service-worker.js": "/jaarques-uoc/boardgames-online-shop.github.io.git/service-worker.js",
-  "static/css/main.e9f58245.chunk.css.map": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/css/main.e9f58245.chunk.css.map",
-  "static/media/logo.svg": "/jaarques-uoc/boardgames-online-shop.github.io.git/static/media/logo.5d5d9eef.svg"
+  "main.css": "/static/css/main.e9f58245.chunk.css",
+  "main.js": "/static/js/main.23229559.chunk.js",
+  "main.js.map": "/static/js/main.23229559.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/js/2.6efc73d3.chunk.js": "/static/js/2.6efc73d3.chunk.js",
+  "static/js/2.6efc73d3.chunk.js.map": "/static/js/2.6efc73d3.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.b156169b119bc745f4603a2aeb757c0f.js": "/precache-manifest.b156169b119bc745f4603a2aeb757c0f.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/main.e9f58245.chunk.css.map": "/static/css/main.e9f58245.chunk.css.map",
+  "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
 }
