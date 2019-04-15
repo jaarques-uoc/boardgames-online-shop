@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Navbar} from "./common/components/Navbar";
-import {Grid} from "./common/components/Grid";
+import {Grid} from "./routes/products/components/Grid";
 
 class App extends Component {
     render() {
