@@ -21,7 +21,7 @@ const toMatrix = (array, numCols) => {
 
 };
 
-const Grid = ({}) => {
+const Products = ({}) => {
     const grid = toMatrix(fetchProducts(), 6);
 
     return (
@@ -33,4 +33,4 @@ const Grid = ({}) => {
     );
 };
 
-export {Grid};
+export {Products};
