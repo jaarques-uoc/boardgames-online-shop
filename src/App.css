@@ -32,10 +32,18 @@
     }
 }
 
+.content-padding {
+    padding: 50px;
+}
+
 .grid-row {
     padding: 40px;
 }
 
 .grid-item img {
     max-width: 150px;
+}
+
+.product-info-padding {
+    padding-bottom: 20px;
 }

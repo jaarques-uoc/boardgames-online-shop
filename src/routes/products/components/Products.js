@@ -25,11 +25,11 @@ const Products = ({}) => {
     const grid = toMatrix(fetchProducts(), 6);
 
     return (
-        <React.Fragment>
+        <div className="container-fluid content-padding">
             {
                 grid.map(gridRow => <GridRow productsRow={gridRow}/>)
             }
-        </React.Fragment>
+        </div>
     );
 };
 
