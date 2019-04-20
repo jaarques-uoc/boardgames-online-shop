@@ -1,6 +1,6 @@
 import React from 'react';
 
 const User = () =>
-    <div>Profile</div>;
+    <div className="container content-padding">Profile</div>;
 
 export {User};

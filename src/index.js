@@ -11,6 +11,8 @@ import {Cart} from "./routes/cart/Cart";
 import {User} from "./routes/users/User";
 import {Product} from "./routes/products/Product";
 import {Error404} from "./routes/error/Error404";
+import {Signup} from "./routes/login/Signup";
+import {Login} from "./routes/login/Login";
 
 const routing = (
     <Router>
@@ -18,8 +20,10 @@ const routing = (
             <Navbar/>
             <Switch>
                 <Route exact path="/" component={App}/>
-                <Route path="/user" component={User}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/signup" component={Signup}/>
                 <Route path="/cart" component={Cart}/>
+                <Route path="/user" component={User}/>
                 <Route path="/users" component={Users}/>
                 <Route path="/product/:id" component={Product}/>
                 <Route component={Error404}/>

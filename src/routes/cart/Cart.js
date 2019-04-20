@@ -1,6 +1,6 @@
 import React from 'react';
 
 const Cart = () =>
-    <div>Cart</div>;
+    <div className="container content-padding">Cart</div>;
 
 export {Cart};
