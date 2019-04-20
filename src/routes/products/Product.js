@@ -1,5 +1,5 @@
 import React from 'react';
-import {getProduct} from "../productsDAO";
+import {getProduct} from "./productsDAO";
 
 const Product = ({match}) => {
     const {params} = match;

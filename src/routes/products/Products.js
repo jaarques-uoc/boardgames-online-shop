@@ -1,6 +1,6 @@
 import React from 'react';
-import {GridRow} from "./GridRow";
-import {fetchProducts} from "../productsDAO";
+import {GridRow} from "./grid/GridRow";
+import {fetchProducts} from "./productsDAO";
 
 const toMatrix = (array, numCols) => {
     const addElementToCell = (array, x, i) => {
