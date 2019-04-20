@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import {Navbar} from "./common/components/Navbar";
 import {Users} from "./routes/users/Users";
 import {Cart} from "./routes/cart/Cart";
-import {Profile} from "./routes/users/Profile";
+import {User} from "./routes/users/User";
 import {Product} from "./routes/products/Product";
 import {Error404} from "./routes/error/Error404";
 
@@ -18,7 +18,7 @@ const routing = (
             <Navbar/>
             <Switch>
                 <Route exact path="/" component={App}/>
-                <Route path="/user" component={Profile}/>
+                <Route path="/user" component={User}/>
                 <Route path="/cart" component={Cart}/>
                 <Route path="/users" component={Users}/>
                 <Route path="/product/:id" component={Product}/>
