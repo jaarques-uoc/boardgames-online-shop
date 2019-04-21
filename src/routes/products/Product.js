@@ -2,8 +2,7 @@ import React from 'react';
 import {getProduct} from "./productsDAO";
 
 const Product = ({match}) => {
-    const {params} = match;
-    const product = getProduct(params.id);
+    const product = getProduct(match.params.id);
     return (
         <div className="container content-padding">
             <div className="row justify-content-center">

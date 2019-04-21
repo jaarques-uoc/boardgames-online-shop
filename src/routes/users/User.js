@@ -1,13 +1,14 @@
 import React from 'react';
 import {getUser} from "./usersDAO";
 
-const User = () => {
-    const user = getUser(1);
+const User = ({match}) => {
+    const user = getUser(match.params.id);
 
     return (
         <div className="container content-padding">
             <div className="row justify-content-center">
                 <div className="col-8">
+                    <FieldView label="User id" value={user.id}/>
                     <FieldView label="Email address" value={user.email}/>
                     <FieldView label="Full name" value={user.fullName}/>
                     <FieldView label="Address" value={user.address}/>
