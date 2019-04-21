@@ -45,7 +45,7 @@ class Login extends React.Component {
                                     disabled={!this.validateForm()}
                                     onClick={this.onClick}
                                     className="btn btn-primary btn-block">
-                                Submit
+                                Log in
                             </button>
                         </form>
                     </div>

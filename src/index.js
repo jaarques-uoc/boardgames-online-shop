@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import {Navbar} from "./common/components/Navbar";
+import {Navbar} from "./common/Navbar";
 import {Users} from "./routes/users/Users";
 import {Cart} from "./routes/cart/Cart";
 import {User} from "./routes/users/User";
