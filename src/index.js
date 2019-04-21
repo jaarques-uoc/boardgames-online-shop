@@ -13,6 +13,8 @@ import {Product} from "./routes/products/Product";
 import {Error404} from "./routes/error/Error404";
 import {Signup} from "./routes/login/Signup";
 import {Login} from "./routes/login/Login";
+import {Order} from "./routes/orders/Order";
+import {Orders} from "./routes/orders/Orders";
 
 const routing = (
     <Router>
@@ -23,6 +25,8 @@ const routing = (
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Signup}/>
                 <Route path="/cart" component={Cart}/>
+                <Route path="/order" component={Order}/>
+                <Route path="/orders" component={Orders}/>
                 <Route path="/user" component={User}/>
                 <Route path="/users" component={Users}/>
                 <Route path="/product/:id" component={Product}/>
