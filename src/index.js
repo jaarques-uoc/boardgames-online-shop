@@ -23,12 +23,12 @@ const routing = (
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/cart" component={Cart}/>
-            <Route path="/orders" component={Orders}/>
             <Route path="/orders/:id" component={Order}/>
-            <Route path="/users" component={Users}/>
+            <Route path="/orders" component={Orders}/>
             <Route path="/users/:id" component={User}/>
-            <Route exact path="/" component={Products}/>
+            <Route path="/users" component={Users}/>
             <Route path="/products/:id" component={Product}/>
+            <Route exact path="/" component={Products}/>
             <Route component={Error404}/>
         </Switch>
     </Router>
