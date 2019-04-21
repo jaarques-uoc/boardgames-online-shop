@@ -18,8 +18,10 @@ const Orders = () => {
 const OrderRow = ({order}) =>
     <div className="row">
         <div className="col-1">{order.id}</div>
-        <div className="col-4"><Link to={`/user/${order.id}`}>{order.id}</Link></div>
-        <div className="col-3">{order.fullName}</div>
+        <div className="col-2"><Link to={`/orders/${order.id}`}>{order.id}</Link></div>
+        <div className="col-2">{order.userId}</div>
+        <div className="col-2">{order.amount} €</div>
+        <div className="col-4">{order.date}</div>
     </div>;
 
 export {Orders};

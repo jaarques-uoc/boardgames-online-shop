@@ -18,7 +18,7 @@ const Users = () => {
 const UserRow = ({user}) =>
     <div className="row">
         <div className="col-1">{user.id}</div>
-        <div className="col-4"><Link to={`/user/${user.id}`}>{user.email}</Link></div>
+        <div className="col-4"><Link to={`/users/${user.id}`}>{user.email}</Link></div>
         <div className="col-3">{user.fullName}</div>
     </div>;
 

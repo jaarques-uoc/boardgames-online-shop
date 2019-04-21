@@ -25,9 +25,9 @@ const routing = (
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Signup}/>
                 <Route path="/cart" component={Cart}/>
-                <Route path="/order" component={Order}/>
+                <Route path="/orders/:id" component={Order}/>
                 <Route path="/orders" component={Orders}/>
-                <Route path="/user/:id" component={User}/>
+                <Route path="/users/:id" component={User}/>
                 <Route path="/users" component={Users}/>
                 <Route path="/product/:id" component={Product}/>
                 <Route component={Error404}/>
