@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
@@ -15,24 +14,23 @@ import {Signup} from "./routes/login/Signup";
 import {Login} from "./routes/login/Login";
 import {Order} from "./routes/orders/Order";
 import {Orders} from "./routes/orders/Orders";
+import {Products} from "./routes/products/Products";
 
 const routing = (
     <Router>
-        <div>
-            <Navbar/>
-            <Switch>
-                <Route exact path="/" component={App}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/signup" component={Signup}/>
-                <Route path="/cart" component={Cart}/>
-                <Route path="/orders/:id" component={Order}/>
-                <Route path="/orders" component={Orders}/>
-                <Route path="/users/:id" component={User}/>
-                <Route path="/users" component={Users}/>
-                <Route path="/product/:id" component={Product}/>
-                <Route component={Error404}/>
-            </Switch>
-        </div>
+        <Navbar/>
+        <Switch>
+            <Route path="/login" component={Login}/>
+            <Route path="/signup" component={Signup}/>
+            <Route path="/cart" component={Cart}/>
+            <Route path="/orders" component={Orders}/>
+            <Route path="/orders/:id" component={Order}/>
+            <Route path="/users" component={Users}/>
+            <Route path="/users/:id" component={User}/>
+            <Route exact path="/" component={Products}/>
+            <Route path="/products/:id" component={Product}/>
+            <Route component={Error404}/>
+        </Switch>
     </Router>
 );
 

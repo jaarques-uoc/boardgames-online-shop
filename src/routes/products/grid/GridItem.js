@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const LinkToProduct = ({children, id}) => <Link to={`/product/${id}`}>{children}</Link>;
+const LinkToProduct = ({children, id}) => <Link to={`/products/${id}`}>{children}</Link>;
 
 const GridItem = ({product}) =>
     <div className="col-6 col-md-2 text-center">
