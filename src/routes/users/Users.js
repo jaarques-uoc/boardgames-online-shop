@@ -11,9 +11,9 @@ const Users = () => {
                     <table className="table">
                         <thead className="thead-light text-center">
                         <tr>
-                            <th scope="col">Order id</th>
-                            <th scope="col">Order id</th>
                             <th scope="col">User id</th>
+                            <th scope="col">Email address</th>
+                            <th scope="col">Full name</th>
                             <th scope="col">Registration date</th>
                         </tr>
                         </thead>
