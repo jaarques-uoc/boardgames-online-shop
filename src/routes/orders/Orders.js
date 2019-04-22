@@ -19,7 +19,7 @@ const Orders = () => {
                         </tr>
                         </thead>
                         <tbody>
-                            {orders.map(order => <OrderRow order={order}/>)}
+                        {orders.map(order => <OrderRow order={order}/>)}
                         </tbody>
                     </table>
                 </div>

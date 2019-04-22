@@ -10,12 +10,25 @@ const Cart = () => {
         <div className="container content-padding">
             <div className="row justify-content-center">
                 <div className="col-8">
-                    {cart.products.map(cartItem => <CartItem cartItem={cartItem}/>)}
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-8">
-                    {totalPrice} €
+                    <table className="table">
+                        <thead className="thead-light text-center">
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {cart.products.map(cartItem => <CartItem cartItem={cartItem}/>)}
+                        <tr>
+                            <td colSpan="5" className="text-right">
+                                {totalPrice} €
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -25,13 +38,15 @@ const Cart = () => {
 const CartItem = ({cartItem}) => {
     const totalItemPrice = (cartItem.product.price * cartItem.quantity).toFixed(2);
 
-    return (<div className="row">
-        <div className="col-1"><Link to={`/products/${cartItem.product.id}`}>{cartItem.product.id}</Link></div>
-        <div className="col-4">{cartItem.product.name}</div>
-        <div className="col-1 text-right">{cartItem.quantity}</div>
-        <div className="col-2 text-right">{cartItem.product.price} €</div>
-        <div className="col-2 text-right">{totalItemPrice} €</div>
-    </div>);
+    return (
+        <tr className="text-center cart-item">
+            <td><Link to={`/products/${cartItem.product.id}`}><img src={cartItem.product.imageUrl}/></Link></td>
+            <td className="align-middle">{cartItem.product.name}</td>
+            <td className="align-middle text-right">{cartItem.product.price} €</td>
+            <td className="align-middle">{cartItem.quantity}</td>
+            <td className="align-middle text-right">{totalItemPrice} €</td>
+        </tr>
+    );
 };
 
 export {Cart};
