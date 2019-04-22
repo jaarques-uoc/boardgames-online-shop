@@ -8,7 +8,19 @@ const Users = () => {
         <div className="container content-padding">
             <div className="row justify-content-center">
                 <div className="col-8">
-                    {users.map(user => <UserRow user={user}/>)}
+                    <table className="table">
+                        <thead className="thead-light text-center">
+                        <tr>
+                            <th scope="col">Order id</th>
+                            <th scope="col">Order id</th>
+                            <th scope="col">User id</th>
+                            <th scope="col">Registration date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {users.map(user => <UserRow user={user}/>)}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -16,10 +28,11 @@ const Users = () => {
 };
 
 const UserRow = ({user}) =>
-    <div className="row">
-        <div className="col-1">{user.id}</div>
-        <div className="col-4"><Link to={`/users/${user.id}`}>{user.email}</Link></div>
-        <div className="col-3">{user.fullName}</div>
-    </div>;
+    <tr className="text-center">
+        <th scope="row">{user.id}</th>
+        <td><Link to={`/users/${user.id}`}>{user.email}</Link></td>
+        <td>{user.fullName}</td>
+        <td>{user.creationDate}</td>
+    </tr>;
 
 export {Users};

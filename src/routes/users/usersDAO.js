@@ -5,7 +5,8 @@ const getUser = id => ({
     email: `email_${id}@test.com`,
     fullName: 'Full name test',
     address: 'Test address 123, Bla bla',
-    country: 'Test'
+    country: 'Test',
+    creationDate: '2019'
 });
 
 
