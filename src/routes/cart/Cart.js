@@ -21,7 +21,7 @@ const Cart = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {cart.products.map(cartItem => <CartItem cartItem={cartItem}/>)}
+                        {cart.products.map((cartItem, key) => <CartItem cartItem={cartItem} key={key}/>)}
                         <tr>
                             <td colSpan="5" className="text-right">
                                 {totalPrice} €
@@ -43,7 +43,19 @@ const CartItem = ({cartItem}) => {
             <td><Link to={`/products/${cartItem.product.id}`}><img src={cartItem.product.imageUrl}/></Link></td>
             <td className="align-middle">{cartItem.product.name}</td>
             <td className="align-middle text-right">{cartItem.product.price} €</td>
-            <td className="align-middle">{cartItem.quantity}</td>
+            <td className="align-middle">
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a className="dropdown-item" href="#">Action</a>
+                        <a className="dropdown-item" href="#">Another action</a>
+                        <a className="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </td>
             <td className="align-middle text-right">{totalItemPrice} €</td>
         </tr>
     );

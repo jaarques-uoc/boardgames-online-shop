@@ -3,7 +3,7 @@ import {GridItem} from "./GridItem";
 
 const GridRow = ({productsRow}) =>
     <div className="row grid-row">
-        {productsRow.map(product => <GridItem product={product}/>)}
+        {productsRow.map((product, key) => <GridItem product={product} key={key}/>)}
     </div>;
 
 export {GridRow};

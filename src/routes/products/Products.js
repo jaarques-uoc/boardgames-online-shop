@@ -27,7 +27,7 @@ const Products = ({}) => {
     return (
         <div className="container-fluid content-padding">
             {
-                grid.map(gridRow => <GridRow productsRow={gridRow}/>)
+                grid.map((gridRow, key) => <GridRow productsRow={gridRow} key={key}/>)
             }
         </div>
     );

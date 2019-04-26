@@ -17,7 +17,7 @@ const getCart = userId => ({
         },
         {
             product: getProduct(84),
-            quantity: 20
+            quantity: 10
         }
     ]
 });
