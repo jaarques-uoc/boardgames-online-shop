@@ -1,5 +1,5 @@
 const URLS = {
-    CUSTOMERS_WS: 'api-gateway-ws.herokuapp.com/customers-ws'
+    CUSTOMERS_WS: 'https://api-gateway-ws.herokuapp.com/customers-ws'
 };
 
 const fetchUsers = () => fetch(`${URLS.CUSTOMERS_WS}/customers/`)
