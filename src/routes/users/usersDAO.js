@@ -1,13 +1,11 @@
-const fetchUsers = () => [...Array(20).keys()].map(getUser);
+const URLS = {
+    CUSTOMERS_WS: 'api-gateway-ws.herokuapp.com/customers-ws'
+};
 
-const getUser = id => ({
-    id: id,
-    email: `email_${id}@test.com`,
-    fullName: 'Full name test',
-    address: 'Test address 123, Bla bla',
-    country: 'Test',
-    creationDate: '2019'
-});
+const fetchUsers = () => fetch(`${URLS.CUSTOMERS_WS}/customers/`)
+    .catch(e => console.log(`Error when retrieving users: ${e}`));
 
+const getUser = id => fetch(`${URLS.CUSTOMERS_WS}/customers/${id}`)
+    .catch(e => console.log(`Error when retrieving user ${id}: ${e}`));
 
 export {fetchUsers, getUser};
