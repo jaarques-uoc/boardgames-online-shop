@@ -13,7 +13,7 @@ class User extends React.Component {
     };
 
     loadUser = () => getUser(this.props.match.params.id)
-        .then(user => this.setState(user));
+        .then(user => this.setState({user}));
 
     render() {
         const {user} = this.state;

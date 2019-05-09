@@ -15,7 +15,7 @@ class Users extends React.Component {
     };
 
     loadUsers = () => fetchUsers()
-        .then(users => this.setState(users));
+        .then(users => this.setState({users}));
 
     render() {
         return (
