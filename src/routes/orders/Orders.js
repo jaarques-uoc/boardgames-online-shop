@@ -49,7 +49,7 @@ const OrderRow = ({order}) =>
     <tr className="text-center">
         <th scope="row">{order.id}</th>
         <td><Link to={`/orders/${order.id}`}>{order.id}</Link></td>
-        <td>{order.userId}</td>
+        <td>{order.customerId}</td>
         <td className="text-right">{order.amount} €</td>
         <td>{order.date}</td>
     </tr>;
