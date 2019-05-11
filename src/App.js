@@ -9,10 +9,12 @@ class App extends React.Component {
         super(props);
 
         this.loadSystemStatus();
+        setTimeout(() => this.setState({initialTimeoutPassed: true}), 1000);
     }
 
     state = {
-        systemStatus: undefined
+        systemStatus: undefined,
+        initialTimeoutPassed: false
     };
 
     loadSystemStatus = () => fetchSystemHealth()
@@ -26,7 +28,8 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                {this.isSystemUp() ? <Products/> : <Loading/>}
+                {this.isSystemUp() && <Products/>}
+                {!this.isSystemUp() && this.state.initialTimeoutPassed && <Loading/>}
             </React.Fragment>
         );
     }
