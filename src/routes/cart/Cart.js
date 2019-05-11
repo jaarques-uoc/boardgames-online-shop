@@ -1,7 +1,6 @@
 import React from 'react';
 import {getCart} from "./cartDAO";
 import {OrderItem} from "../../common/OrderItem";
-import {calculateTotalPrice} from "../../common/calculations";
 
 class Cart extends React.Component {
     constructor(props) {
@@ -18,6 +17,9 @@ class Cart extends React.Component {
         console.log(item);
         console.log(event.target.value);
     };
+
+    calculateTotalPrice = products => products
+        .reduce((acc, item) => acc + item.quantity * item.product.price, 0);
 
     render() {
         return (
@@ -44,7 +46,7 @@ class Cart extends React.Component {
                             )}
                             <tr>
                                 <td colSpan="5" className="text-right">
-                                    {calculateTotalPrice(this.state.cart.orderItems)} €
+                                    {this.calculateTotalPrice(this.state.cart.orderItems)} €
                                 </td>
                             </tr>
                             </tbody>
