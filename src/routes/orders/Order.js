@@ -1,6 +1,7 @@
 import React from 'react';
 import {OrderItem} from "../../common/OrderItem";
 import {getOrder} from "./ordersDAO";
+import {calculateTotalPrice} from "../../common/calculations";
 
 class Order extends React.Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class Order extends React.Component {
                             )}
                             <tr>
                                 <td colSpan="5" className="text-right">
-                                    {this.calculateTotalPrice()} €
+                                    {calculateTotalPrice(this.state.order.orderItems)} €
                                 </td>
                             </tr>
                             </tbody>

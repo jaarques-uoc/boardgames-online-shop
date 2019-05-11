@@ -1,6 +1,7 @@
 import React from 'react';
 import {getCart} from "./cartDAO";
 import {OrderItem} from "../../common/OrderItem";
+import {calculateTotalPrice} from "../../common/calculations";
 
 class Cart extends React.Component {
     constructor(props) {
@@ -11,9 +12,6 @@ class Cart extends React.Component {
             loading: false
         }
     }
-
-    calculateTotalPrice = () => this.state.cart.products
-        .reduce((acc, item) => acc + item.quantity * item.product.price, 0);
 
     onChange = item => event => {
         this.setState({loading: true});
@@ -37,7 +35,7 @@ class Cart extends React.Component {
                             </tr>
                             </thead>
                             <tbody>
-                            {this.state.cart.products.map((cartItem, key) =>
+                            {this.state.cart.orderItems.map((cartItem, key) =>
                                 <OrderItem cartItem={cartItem}
                                            key={key}
                                            onChange={this.onChange(cartItem.product)}
@@ -46,7 +44,7 @@ class Cart extends React.Component {
                             )}
                             <tr>
                                 <td colSpan="5" className="text-right">
-                                    {this.calculateTotalPrice()} €
+                                    {calculateTotalPrice(this.state.cart.orderItems)} €
                                 </td>
                             </tr>
                             </tbody>
