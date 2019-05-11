@@ -21,16 +21,32 @@ const toMatrix = (array, numCols) => {
 
 };
 
-const Products = ({}) => {
-    const grid = toMatrix(fetchProducts(), 6);
+class Products extends React.Component {
 
-    return (
-        <div className="container-fluid content-padding">
-            {
-                grid.map((gridRow, key) => <GridRow productsRow={gridRow} key={key}/>)
-            }
-        </div>
-    );
-};
+    constructor(props) {
+        super(props);
+
+        this.loadProducts();
+    }
+
+    state = {
+        products: []
+    };
+
+    loadProducts = () => fetchProducts()
+        .then(products => this.setState({products}));
+
+    render() {
+        const grid = toMatrix(this.state.products, 6);
+
+        return (
+            <div className="container-fluid content-padding">
+                {
+                    grid.map((gridRow, key) => <GridRow productsRow={gridRow} key={key}/>)
+                }
+            </div>
+        );
+    }
+}
 
 export {Products};
