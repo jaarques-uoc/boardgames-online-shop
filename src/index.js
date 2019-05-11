@@ -14,7 +14,7 @@ import {Signup} from "./routes/login/Signup";
 import {Login} from "./routes/login/Login";
 import {Order} from "./routes/orders/Order";
 import {Orders} from "./routes/orders/Orders";
-import {Products} from "./routes/products/Products";
+import {App} from "./App";
 
 const routing = (
     <Router>
@@ -28,7 +28,7 @@ const routing = (
             <Route path="/users/:id" component={User}/>
             <Route path="/users" component={Users}/>
             <Route path="/products/:id" component={Product}/>
-            <Route exact path="/" component={Products}/>
+            <Route exact path="/" component={App}/>
             <Route component={Error404}/>
         </Switch>
     </Router>
