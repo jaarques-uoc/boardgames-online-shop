@@ -3,6 +3,9 @@ import {GridRow} from "./grid/GridRow";
 import {fetchProducts} from "./productsDAO";
 
 const toMatrix = (array, numCols) => {
+    if (!array)
+        return;
+
     const addElementToCell = (array, x, i) => {
         const rowNumber = Math.floor(i / numCols);
 
@@ -40,6 +43,7 @@ class Products extends React.Component {
         const grid = toMatrix(this.state.products, 6);
 
         return (
+            this.state.products &&
             <div className="container-fluid content-padding">
                 {
                     grid.map((gridRow, key) => <GridRow productsRow={gridRow} key={key}/>)

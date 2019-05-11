@@ -9,7 +9,7 @@ const doGet = url => fetch(url, {
             return response.json();
         }
 
-        console.log(`Response not ok: ${response.status}`)
+        console.log(`Response not ok: ${response.status}`);
     });
 
 export {doGet}
