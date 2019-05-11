@@ -7,7 +7,7 @@ const fetchOrders = () => doGet(`${URLS.ORDERS_WS}/orders/`)
 const getOrder = id => doGet(`${URLS.ORDERS_WS}/orders/${id}`)
     .catch(e => console.log(`Error when retrieving order ${id}: ${e}`));
 
-const fetchCustomerOrders = customerId => doGet(`${URLS.ORDERS_WS}/customers/{customerId}/orders/`)
+const fetchCustomerOrders = customerId => doGet(`${URLS.ORDERS_WS}/customers/${customerId}/orders/`)
     .catch(e => console.log(`Error when retrieving orders for customer ${customerId}: ${e}`));
 
 
