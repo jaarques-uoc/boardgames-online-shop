@@ -1,8 +1,5 @@
 import {doGet} from "../../common/helperDAO";
-
-const URLS = {
-    CUSTOMERS_WS: 'https://api-gateway-ws.herokuapp.com/customers-ws'
-};
+import {URLS} from "../../common/urls";
 
 const fetchUsers = () => doGet(`${URLS.CUSTOMERS_WS}/customers/`)
     .catch(e => console.log(`Error when retrieving users: ${e}`));
