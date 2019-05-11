@@ -1,6 +1,6 @@
 import React from 'react';
 import {getCart} from "./cartDAO";
-import {Link} from "react-router-dom";
+import {OrderItem} from "../../common/OrderItem";
 
 class Cart extends React.Component {
     constructor(props) {
@@ -38,10 +38,11 @@ class Cart extends React.Component {
                             </thead>
                             <tbody>
                             {this.state.cart.products.map((cartItem, key) =>
-                                <CartItem cartItem={cartItem}
-                                          key={key}
-                                          onChange={this.onChange(cartItem.product)}
-                                          disabled={this.state.loading}/>
+                                <OrderItem cartItem={cartItem}
+                                           key={key}
+                                           onChange={this.onChange(cartItem.product)}
+                                           disabled={this.state.loading}
+                                           readOnly={false}/>
                             )}
                             <tr>
                                 <td colSpan="5" className="text-right">
@@ -55,30 +56,6 @@ class Cart extends React.Component {
             </div>
         );
     }
-};
-
-const CartItem = ({cartItem, onChange, disabled}) => {
-    const totalItemPrice = (cartItem.product.price * cartItem.quantity).toFixed(2);
-
-    return (
-        <tr className="text-center cart-item">
-            <td><Link to={`/products/${cartItem.product.id}`}><img src={cartItem.product.imageUrl}/></Link></td>
-            <td className="align-middle">{cartItem.product.name}</td>
-            <td className="align-middle text-right">{cartItem.product.price} €</td>
-            <td className="align-middle">
-                <QuantityDropdown quantity={cartItem.quantity}
-                                  onChange={onChange}
-                                  disabled={disabled}/>
-            </td>
-            <td className="align-middle text-right">{totalItemPrice} €</td>
-        </tr>
-    );
-};
-
-const QuantityDropdown = ({quantity, onChange, disabled}) =>
-    <select onChange={onChange} disabled={disabled}>
-        {[...Array(11).keys()]
-            .map(x => <option value={x} key={x} selected={quantity === x}>{x}</option>)}
-    </select>;
+}
 
 export {Cart};

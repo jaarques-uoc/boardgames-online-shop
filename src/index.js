@@ -13,8 +13,9 @@ import {Error404} from "./routes/error/Error404";
 import {Signup} from "./routes/login/Signup";
 import {Login} from "./routes/login/Login";
 import {Order} from "./routes/orders/Order";
-import {Orders} from "./routes/orders/Orders";
 import {App} from "./App";
+import {MyOrders} from "./routes/orders/MyOrders";
+import {AllOrders} from "./routes/orders/AllOrders";
 
 const routing = (
     <Router>
@@ -24,7 +25,8 @@ const routing = (
             <Route path="/signup" component={Signup}/>
             <Route path="/cart" component={Cart}/>
             <Route path="/orders/:id" component={Order}/>
-            <Route path="/orders" component={Orders}/>
+            <Route path="/orders" component={AllOrders}/>
+            <Route path="/myOrders" component={MyOrders}/>
             <Route path="/users/:id" component={User}/>
             <Route path="/users" component={Users}/>
             <Route path="/products/:id" component={Product}/>

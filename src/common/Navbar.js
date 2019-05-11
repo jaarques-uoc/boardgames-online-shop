@@ -13,7 +13,10 @@ const Navbar = ({}) =>
                     <Link className="nav-link" to="/cart">Cart</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/orders">Orders</Link>
+                    <Link className="nav-link" to="/orders">All customer orders</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/myOrders">My Orders</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/users">Users</Link>

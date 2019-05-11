@@ -1,23 +1,14 @@
-import {getProduct} from "../products/productsDAO";
+import {URLS} from "../../common/urls";
+import {doGet} from "../../common/helperDAO";
 
-const fetchOrders = () => [...Array(20).keys()].map(getOrder);
+const fetchOrders = () => doGet(`${URLS.ORDERS_WS}/orders/`)
+    .catch(e => console.log(`Error when retrieving orders: ${e}`));
 
-const getOrder = id => ({
-    id: id,
-    amount: 123.23,
-    products: [
-        {
-            product: getProduct(10),
-            quantity: 2
-        },
-        {
-            product: getProduct(11),
-            quantity: 2
-        }
-    ],
-    date: '2019',
-    userId: id + '567'
-});
+const getOrder = id => doGet(`${URLS.ORDERS_WS}/orders/${id}`)
+    .catch(e => console.log(`Error when retrieving order ${id}: ${e}`));
+
+const fetchCustomerOrders = customerId => doGet(`${URLS.ORDERS_WS}/customers/{customerId}/orders/`)
+    .catch(e => console.log(`Error when retrieving orders for customer ${customerId}: ${e}`));
 
 
-export {fetchOrders, getOrder};
+export {fetchOrders, fetchCustomerOrders, getOrder};
