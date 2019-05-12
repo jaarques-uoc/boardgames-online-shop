@@ -1,25 +1,8 @@
-import {getProduct} from "../products/productsDAO";
+import {doGet} from "../../common/helperDAO";
+import {URLS} from "../../common/urls";
 
-const getCart = userId => ({
-    userId: userId,
-    products: [
-        {
-            product: getProduct(10),
-            quantity: 2
-        },
-        {
-            product: getProduct(11),
-            quantity: 1
-        },
-        {
-            product: getProduct(123),
-            quantity: 3
-        },
-        {
-            product: getProduct(84),
-            quantity: 10
-        }
-    ]
-});
+
+const getCart = customerId => doGet(`${URLS.CARTS_WS}/customers/${customerId}/cart`)
+    .catch(e => console.log(`Error when retrieving cart for user ${customerId}: ${e}`));
 
 export {getCart};

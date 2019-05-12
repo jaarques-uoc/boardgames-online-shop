@@ -6,11 +6,14 @@ class Cart extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            cart: getCart(),
-            loading: false
-        }
+        this.loadCart();
     }
+
+    state = {
+        cart: undefined,
+        loading: false,
+        userId: 12345678
+    };
 
     onChange = item => event => {
         this.setState({loading: true});
@@ -21,11 +24,15 @@ class Cart extends React.Component {
     calculateTotalPrice = products => products
         .reduce((acc, item) => acc + item.quantity * item.product.price, 0);
 
+    loadCart = () => getCart(this.state.userId)
+        .then(cart => this.setState({cart}));
+
     render() {
         return (
             <div className="container content-padding">
                 <div className="row justify-content-center">
                     <div className="col-8">
+                        {this.state.cart &&
                         <table className="table">
                             <thead className="thead-light text-center">
                             <tr>
@@ -38,7 +45,7 @@ class Cart extends React.Component {
                             </thead>
                             <tbody>
                             {this.state.cart.orderItems.map((cartItem, key) =>
-                                <OrderItem cartItem={cartItem}
+                                <OrderItem orderItem={cartItem}
                                            key={key}
                                            onChange={this.onChange(cartItem.product)}
                                            disabled={this.state.loading}
@@ -46,11 +53,12 @@ class Cart extends React.Component {
                             )}
                             <tr>
                                 <td colSpan="5" className="text-right">
-                                    {this.calculateTotalPrice(this.state.cart.orderItems)} €
+                                    {this.calculateTotalPrice(this.state.cart.orderItems).toFixed(2)} €
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        }
                     </div>
                 </div>
             </div>
