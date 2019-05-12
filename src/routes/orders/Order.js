@@ -21,6 +21,7 @@ class Order extends React.Component {
             <div className="container content-padding">
                 <div className="row justify-content-center">
                     <div className="col-8">
+                        <h1>Order {this.props.match.params.id}</h1>
                         {this.state.order &&
                         <table className="table">
                             <thead className="thead-light text-center">

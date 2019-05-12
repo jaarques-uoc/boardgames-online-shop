@@ -9,7 +9,7 @@ class App extends React.Component {
         super(props);
 
         this.loadSystemStatus();
-        setTimeout(() => this.setState({initialTimeoutPassed: true}), 1000);
+        setTimeout(() => this.setState({initialTimeoutPassed: true}), 2000);
     }
 
     state = {

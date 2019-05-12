@@ -22,11 +22,11 @@ class Orders extends React.Component {
             <div className="container content-padding">
                 <div className="row justify-content-center">
                     <div className="col-8">
+                        <h1>{this.props.title}</h1>
                         {orders && orders.length > 0 &&
                         <table className="table">
                             <thead className="thead-light text-center">
                             <tr>
-                                <th scope="col">Order id</th>
                                 <th scope="col">Order id</th>
                                 <th scope="col">User id</th>
                                 <th scope="col">Total price</th>
@@ -47,7 +47,6 @@ class Orders extends React.Component {
 
 const OrderRow = ({order}) =>
     <tr className="text-center">
-        <th scope="row">{order.id}</th>
         <td><Link to={`/orders/${order.id}`}>{order.id}</Link></td>
         <td>{order.customerId}</td>
         <td className="text-right">{order.amount} €</td>
