@@ -1,5 +1,5 @@
 import React from 'react';
-import {getCart} from "./cartDAO";
+import {getCart, updateCart} from "./cartDAO";
 import {OrderItem} from "../../common/OrderItem";
 
 class Cart extends React.Component {
@@ -17,6 +17,16 @@ class Cart extends React.Component {
 
     onChange = item => event => {
         this.setState({loading: true});
+
+        const cartItem = {
+            product: item,
+            quantity: event.target.value
+        };
+
+        updateCart(this.state.userId, cartItem)
+            .then(cart => this.setState({cart}))
+            .finally(() => this.setState({loading: false}));
+
         console.log(item);
         console.log(event.target.value);
     };
