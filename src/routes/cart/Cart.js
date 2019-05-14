@@ -1,5 +1,5 @@
 import React from 'react';
-import {getCart, updateCart} from "./cartDAO";
+import {getCart, updateCartItem} from "./cartDAO";
 import {OrderItem} from "../../common/OrderItem";
 
 class Cart extends React.Component {
@@ -19,20 +19,17 @@ class Cart extends React.Component {
         this.setState({loading: true});
 
         const cartItem = {
-            product: item,
+            productDto: item,
             quantity: event.target.value
         };
 
-        updateCart(this.state.userId, cartItem)
+        updateCartItem(this.state.userId, cartItem)
             .then(cart => this.setState({cart}))
             .finally(() => this.setState({loading: false}));
-
-        console.log(item);
-        console.log(event.target.value);
     };
 
-    calculateTotalPrice = products => products
-        .reduce((acc, item) => acc + item.quantity * item.product.price, 0);
+    calculateTotalPrice = items => items
+        .reduce((acc, item) => acc + item.quantity * item.productDto.price, 0);
 
     loadCart = () => getCart(this.state.userId)
         .then(cart => this.setState({cart}));
@@ -42,7 +39,8 @@ class Cart extends React.Component {
             <div className="container content-padding">
                 <div className="row justify-content-center">
                     <div className="col-8">
-                        {this.state.cart &&
+                        <h1>Cart</h1>
+                        {this.state.cart && this.state.cart.orderItemDtos &&
                         <table className="table">
                             <thead className="thead-light text-center">
                             <tr>
@@ -54,16 +52,16 @@ class Cart extends React.Component {
                             </tr>
                             </thead>
                             <tbody>
-                            {this.state.cart.orderItems.map((cartItem, key) =>
+                            {this.state.cart.orderItemDtos.map((cartItem, key) =>
                                 <OrderItem orderItem={cartItem}
                                            key={key}
-                                           onChange={this.onChange(cartItem.product)}
+                                           onChange={this.onChange(cartItem.productDto)}
                                            disabled={this.state.loading}
                                            readOnly={false}/>
                             )}
                             <tr>
                                 <td colSpan="5" className="text-right">
-                                    {this.calculateTotalPrice(this.state.cart.orderItems).toFixed(2)} €
+                                    {this.calculateTotalPrice(this.state.cart.orderItemDtos).toFixed(2)} €
                                 </td>
                             </tr>
                             </tbody>

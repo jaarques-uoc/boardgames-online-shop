@@ -4,13 +4,7 @@ const doGet = url => fetch(url, {
         Accept: 'application/json'
     }
 })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-
-        console.log(`Response not ok: ${response.status}`);
-    });
+    .then(handleResponse);
 
 const doPost = (url, body) => fetch(url, {
     method: 'POST',
@@ -20,12 +14,25 @@ const doPost = (url, body) => fetch(url, {
         'Content-Type': 'application/json'
     }
 })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        }
+    .then(handleResponse);
 
-        console.log(`Response not ok: ${response.status}`);
-    });
+const doPut = (url, body) => fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+})
+    .then(handleResponse);
 
-export {doGet, doPost}
+const handleResponse = response => {
+    if (response.ok) {
+        return response.json();
+    }
+
+    console.log(`Response not ok: ${response.status}`);
+    throw '';
+};
+
+export {doGet, doPost, doPut}

@@ -1,5 +1,6 @@
 import React from 'react';
 import {getProduct} from "./productsDAO";
+import {incrementCartItem} from "../cart/cartDAO";
 
 class Product extends React.Component {
     constructor(props) {
@@ -9,11 +10,15 @@ class Product extends React.Component {
     }
 
     state = {
-        product: undefined
+        product: undefined,
+        userId: 12345678
     };
 
     loadProduct = () => getProduct(this.props.match.params.id)
         .then(product => this.setState({product}));
+
+    addProduct = () => incrementCartItem(this.state.userId, this.state.product)
+        .then(() => console.log('Added!!'));
 
     render() {
         const {product} = this.state;
@@ -32,7 +37,11 @@ class Product extends React.Component {
                             <div>{product.description}</div>
                         </div>
                         <div className="p-2">
-                            <button type="button" className="btn btn-primary">Add to cart</button>
+                            <button type="button"
+                                    className="btn btn-primary"
+                                    onClick={this.addProduct}>
+                                Add to cart
+                            </button>
                         </div>
                     </div>
                 </div>

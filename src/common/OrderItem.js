@@ -3,13 +3,13 @@ import {Link} from "react-router-dom";
 
 
 const OrderItem = ({orderItem, onChange, disabled, readOnly}) => {
-    const totalItemPrice = (orderItem.product.price * orderItem.quantity).toFixed(2);
+    const totalItemPrice = (orderItem.productDto.price * orderItem.quantity).toFixed(2);
 
     return (
         <tr className="text-center cart-item">
-            <td><Link to={`/products/${orderItem.product.id}`}><img src={orderItem.product.imageUrl}/></Link></td>
-            <td className="align-middle">{orderItem.product.name}</td>
-            <td className="align-middle text-right">{orderItem.product.price} €</td>
+            <td><Link to={`/products/${orderItem.productDto.id}`}><img src={orderItem.productDto.imageUrl}/></Link></td>
+            <td className="align-middle">{orderItem.productDto.name}</td>
+            <td className="align-middle text-right">{orderItem.productDto.price} €</td>
             <td className="align-middle">
                 {readOnly ? orderItem.quantity :
                     <QuantityDropdown quantity={orderItem.quantity}

@@ -22,7 +22,7 @@ class Order extends React.Component {
                 <div className="row justify-content-center">
                     <div className="col-8">
                         <h1>Order {this.props.match.params.id}</h1>
-                        {this.state.order &&
+                        {this.state.order && this.state.order.orderItemDtos &&
                         <table className="table">
                             <thead className="thead-light text-center">
                             <tr>
@@ -34,7 +34,7 @@ class Order extends React.Component {
                             </tr>
                             </thead>
                             <tbody>
-                            {this.state.order.orderItems.map((orderItem, key) =>
+                            {this.state.order.orderItemDtos.map((orderItem, key) =>
                                 <OrderItem orderItem={orderItem}
                                            key={key}
                                            readOnly={true}/>
