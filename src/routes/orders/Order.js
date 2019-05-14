@@ -1,6 +1,7 @@
 import React from 'react';
 import {OrderItem} from "../../common/OrderItem";
 import {getOrder} from "./ordersDAO";
+import {sortOrderItems} from "../../common/sorting";
 
 class Order extends React.Component {
     constructor(props) {
@@ -14,7 +15,10 @@ class Order extends React.Component {
     };
 
     loadOrder = () => getOrder(this.props.match.params.id)
-        .then(order => this.setState({order}));
+        .then(order => {
+            order.orderItemDtos = sortOrderItems(order.orderItemDtos);
+            this.setState({order})
+        });
 
     render() {
         return (

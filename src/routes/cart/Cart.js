@@ -1,6 +1,7 @@
 import React from 'react';
 import {getCart, updateCartItem} from "./cartDAO";
 import {OrderItem} from "../../common/OrderItem";
+import {sortOrderItems} from "../../common/sorting";
 
 class Cart extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Cart extends React.Component {
         };
 
         updateCartItem(this.state.userId, cartItem)
-            .then(cart => this.setState({cart}))
+            .then(this.saveCartState)
             .finally(() => this.setState({loading: false}));
     };
 
@@ -32,7 +33,12 @@ class Cart extends React.Component {
         .reduce((acc, item) => acc + item.quantity * item.productDto.price, 0);
 
     loadCart = () => getCart(this.state.userId)
-        .then(cart => this.setState({cart}));
+        .then(this.saveCartState);
+
+    saveCartState = cart => {
+        cart.orderItemDtos = sortOrderItems(cart.orderItemDtos);
+        this.setState({cart});
+    };
 
     render() {
         return (
