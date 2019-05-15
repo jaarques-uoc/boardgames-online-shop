@@ -23,9 +23,9 @@ const OrderItem = ({orderItem, onChange, disabled, readOnly}) => {
 };
 
 const QuantityDropdown = ({quantity, onChange, disabled}) =>
-    <select onChange={onChange} disabled={disabled}>
+    <select onChange={onChange} disabled={disabled} value={quantity}>
         {[...Array(11).keys()]
-            .map(x => <option value={x} key={x} selected={quantity === x}>{x}</option>)}
+            .map(x => <option value={x} key={x}>{x}</option>)}
     </select>;
 
 export {OrderItem};
