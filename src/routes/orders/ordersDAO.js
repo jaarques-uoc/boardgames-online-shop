@@ -1,5 +1,5 @@
 import {URLS} from "../../common/urls";
-import {doGet} from "../../common/helperDAO";
+import {doGet, doPost} from "../../common/helperDAO";
 
 const fetchOrders = () => doGet(`${URLS.ORDERS_WS}/orders/`)
     .catch(e => {
@@ -19,5 +19,11 @@ const fetchCustomerOrders = customerId => doGet(`${URLS.ORDERS_WS}/customers/${c
         throw '';
     });
 
+const createOrder = (order, customerId) => doPost(`${URLS.ORDERS_WS}/customers/${customerId}/orders/`, order)
+    .catch(e => {
+        console.log(`Error when updating cart for user ${customerId}: ${e}`);
+        throw '';
+    });
 
-export {fetchOrders, fetchCustomerOrders, getOrder};
+
+export {fetchOrders, fetchCustomerOrders, getOrder, createOrder};

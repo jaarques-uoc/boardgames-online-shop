@@ -2,6 +2,7 @@ import React from 'react';
 import {getCart, updateCartItem} from "./cartDAO";
 import {OrderItem} from "../../common/OrderItem";
 import {sortOrderItems} from "../../common/sorting";
+import {createOrder} from "../orders/ordersDAO";
 
 class Cart extends React.Component {
     constructor(props) {
@@ -40,13 +41,34 @@ class Cart extends React.Component {
         this.setState({cart});
     };
 
+    createOrder = () => createOrder(this.state.cart, this.state.userId)
+        .then(() => {
+            console.log("redirect to success page")
+            this.setState({cart: {}})
+        })
+        .catch(() => console.log("Show alert error"));
+
+    isCartEmpty = () => !(this.state.cart && this.state.cart.orderItemDtos);
+
     render() {
         return (
             <div className="container content-padding">
                 <div className="row justify-content-center">
                     <div className="col-8">
-                        <h1>Cart</h1>
-                        {this.state.cart && this.state.cart.orderItemDtos &&
+                        <div className="d-flex">
+                            <div className="p-2">
+                                <h1>Cart</h1>
+                            </div>
+                            <div className="ml-auto p-2">
+                                <button type="button"
+                                        className="btn btn-primary"
+                                        onClick={this.createOrder}
+                                        disabled={this.isCartEmpty() || this.state.loading}>
+                                    Create order
+                                </button>
+                            </div>
+                        </div>
+                        {!this.isCartEmpty() &&
                         <table className="table">
                             <thead className="thead-light text-center">
                             <tr>
