@@ -114,7 +114,7 @@ class CartComponent extends React.Component {
                 }
                 <div className="container content-padding">
                     <div className="row justify-content-center">
-                        <div className="col-8">
+                        <div className="col-12">
                             <div className="d-flex">
                                 <div className="p-2">
                                     <h1>Cart</h1>

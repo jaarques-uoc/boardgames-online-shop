@@ -21,7 +21,7 @@ class Orders extends React.Component {
         return (
             <div className="container content-padding">
                 <div className="row justify-content-center">
-                    <div className="col-8">
+                    <div className="col-12">
                         <h1>{this.props.title}</h1>
                         {orders && orders.length > 0 &&
                         <table className="table">

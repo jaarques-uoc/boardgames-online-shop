@@ -21,7 +21,7 @@ class User extends React.Component {
         return (
             <div className="container content-padding">
                 <div className="row justify-content-center">
-                    <div className="col-8">
+                    <div className="col-12">
                         <h1>User {this.props.match.params.id}</h1>
                         {user &&
                         <div className="col-12">

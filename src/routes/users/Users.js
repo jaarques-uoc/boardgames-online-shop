@@ -21,7 +21,7 @@ class Users extends React.Component {
         return (
             <div className="container content-padding">
                 <div className="row justify-content-center">
-                    <div className="col-8">
+                    <div className="col-12">
                         <h1>Users</h1>
                         {this.state.users && this.state.users.length > 0 &&
                         <table className="table">
