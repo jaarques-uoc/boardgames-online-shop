@@ -30,6 +30,7 @@ class User extends React.Component {
                             <FieldView label="Full name" value={user.fullName}/>
                             <FieldView label="Address" value={user.address}/>
                             <FieldView label="Country" value={user.country}/>
+                            <FieldView label="Registration date" value={user.date}/>
                         </div>
                         }
                     </div>

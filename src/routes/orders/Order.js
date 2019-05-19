@@ -17,7 +17,7 @@ class Order extends React.Component {
     loadOrder = () => getOrder(this.props.match.params.id)
         .then(order => {
             order.orderItemDtos = sortOrderItems(order.orderItemDtos);
-            this.setState({order})
+            this.setState({order});
         });
 
     render() {

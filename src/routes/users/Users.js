@@ -50,7 +50,7 @@ const UserRow = ({user}) =>
         <th scope="row">{user.id}</th>
         <td><Link to={`/users/${user.id}`}>{user.email}</Link></td>
         <td>{user.fullName}</td>
-        <td>{user.creationDate}</td>
+        <td>{user.date}</td>
     </tr>;
 
 export {Users};

@@ -16,12 +16,16 @@ import {Order} from "./routes/orders/Order";
 import {App} from "./App";
 import {MyOrders} from "./routes/orders/MyOrders";
 import {AllOrders} from "./routes/orders/AllOrders";
+import {Provider} from 'react-redux'
+import {configureStore} from './store';
+import {Logout} from "./routes/login/Logout";
 
 const routing = (
     <Router>
         <Navbar/>
         <Switch>
             <Route path="/login" component={Login}/>
+            <Route path="/logout" component={Logout}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/cart" component={Cart}/>
             <Route path="/orders/:id" component={Order}/>
@@ -36,7 +40,12 @@ const routing = (
     </Router>
 );
 
-ReactDOM.render(routing, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={configureStore()}>
+        {routing}
+    </Provider>,
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

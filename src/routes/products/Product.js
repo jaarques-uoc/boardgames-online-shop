@@ -2,7 +2,6 @@ import React from 'react';
 import {getProduct} from "./productsDAO";
 import {incrementCartItem} from "../cart/cartDAO";
 import {
-    Alert,
     ErrorAlert,
     hideErrorAlert,
     hideSuccessAlert,
@@ -62,7 +61,7 @@ class Product extends React.Component {
                     {product &&
                     <div className="row justify-content-center">
                         <div className="col-4 text-center">
-                            <img src={product.imageUrl}/>
+                            <img src={product.imageUrl} alt=""/>
                         </div>
                         <div className="col-4 d-flex align-items-start flex-column">
                             <div className="mb-auto p-2">

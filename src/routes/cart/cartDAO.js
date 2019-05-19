@@ -1,4 +1,4 @@
-import {doGet, doPost, doPut} from "../../common/helperDAO";
+import {doGet, doPost} from "../../common/helperDAO";
 import {URLS} from "../../common/urls";
 
 const getCartUrl = customerId => `${URLS.CARTS_WS}/customers/${customerId}/cart`;

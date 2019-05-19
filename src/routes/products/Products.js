@@ -5,7 +5,8 @@ import {incrementCartItem} from "../cart/cartDAO";
 import {
     ErrorAlert,
     hideErrorAlert,
-    hideSuccessAlert, resetAlert,
+    hideSuccessAlert,
+    resetAlert,
     showErrorAlert,
     showSuccessAlert,
     SuccessAlert

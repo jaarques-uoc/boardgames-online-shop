@@ -1,13 +1,13 @@
 import React from "react";
 
 
-const TextInput = ({fieldName, label, onChange}) =>
-    <FieldInput fieldName={fieldName} label={label} onChange={onChange} type="text"/>;
+const TextInput = ({fieldName, label, onChange, disabled}) =>
+    <FieldInput fieldName={fieldName} label={label} onChange={onChange} disabled={disabled} type="text"/>;
 
-const PasswordInput = ({fieldName, label, onChange}) =>
-    <FieldInput fieldName={fieldName} label={label} onChange={onChange} type="password"/>;
+const PasswordInput = ({fieldName, label, onChange, disabled}) =>
+    <FieldInput fieldName={fieldName} label={label} onChange={onChange} disabled={disabled} type="password"/>;
 
-const FieldInput = ({fieldName, label, type, placeholder, onChange}) =>
+const FieldInput = ({fieldName, label, type, placeholder, onChange, disabled}) =>
     <div className="form-group row">
         <label htmlFor={fieldName} className="col-sm-3 col-form-label">{label}</label>
         <div className="col-sm-9">
@@ -15,6 +15,7 @@ const FieldInput = ({fieldName, label, type, placeholder, onChange}) =>
                    className="form-control"
                    id={fieldName}
                    onChange={onChange}
+                   disabled={disabled}
                    placeholder={placeholder}/>
         </div>
     </div>;
