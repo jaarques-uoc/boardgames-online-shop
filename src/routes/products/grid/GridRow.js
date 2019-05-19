@@ -1,9 +1,13 @@
 import React from 'react';
 import {GridItem} from "./GridItem";
 
-const GridRow = ({productsRow, addProduct}) =>
+const GridRow = ({productsRow, addProduct, disabled}) =>
     <div className="row grid-row">
-        {productsRow.map((product, key) => <GridItem product={product} addProduct={addProduct} key={key}/>)}
+        {productsRow.map((product, key) => <GridItem product={product}
+                                                     addProduct={addProduct}
+                                                     disabled={disabled}
+                                                     key={key}/>)
+        }
     </div>;
 
 export {GridRow};

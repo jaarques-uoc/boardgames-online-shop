@@ -12,8 +12,9 @@ import {
     showSuccessAlert,
     SuccessAlert
 } from "../../common/Alert";
+import {connect} from "react-redux";
 
-class Cart extends React.Component {
+class CartComponent extends React.Component {
     constructor(props) {
         super(props);
 
@@ -23,7 +24,6 @@ class Cart extends React.Component {
     state = {
         cart: undefined,
         loading: false,
-        userId: 12345678,
         alerts: {
             success: resetAlert(),
             error: resetAlert()
@@ -39,7 +39,7 @@ class Cart extends React.Component {
             quantity: event.target.value
         };
 
-        updateCartItem(this.state.userId, cartItem)
+        updateCartItem(this.props.sessionCustomer.id, cartItem)
             .then(this.saveCartState)
             .finally(() => this.setState({loading: false}));
     };
@@ -47,7 +47,7 @@ class Cart extends React.Component {
     calculateTotalPrice = items => items
         .reduce((acc, item) => acc + item.quantity * item.productDto.price, 0);
 
-    loadCart = () => getCart(this.state.userId)
+    loadCart = () => getCart(this.props.sessionCustomer.id)
         .then(this.saveCartState);
 
     saveCartState = cart => {
@@ -55,12 +55,17 @@ class Cart extends React.Component {
         this.setState({cart});
     };
 
-    createOrder = () => createOrder(this.state.cart, this.state.userId)
-        .then(order => {
-            this.setState({cart: {}, order});
-            this.showSuccessAlert();
-        })
-        .catch(this.showErrorAlert);
+    createOrder = () => {
+        this.setState({loading: true});
+
+        createOrder(this.state.cart, this.props.sessionCustomer.id)
+            .then(order => {
+                this.setState({cart: {}, order});
+                this.showSuccessAlert();
+            })
+            .catch(this.showErrorAlert)
+            .finally(() => this.setState({loading: false}));
+    };
 
     isCartEmpty = () => !(this.state.cart && this.state.cart.orderItemDtos);
 
@@ -135,5 +140,11 @@ class Cart extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    ...state.sessionReducer
+});
+
+const Cart = connect(mapStateToProps)(CartComponent);
 
 export {Cart};

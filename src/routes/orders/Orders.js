@@ -48,7 +48,7 @@ class Orders extends React.Component {
 const OrderRow = ({order}) =>
     <tr className="text-center">
         <td><Link to={`/orders/${order.id}`}>{order.id}</Link></td>
-        <td>{order.customerId}</td>
+        <td><Link to={`/users/${order.customerId}`}>{order.customerId}</Link></td>
         <td className="text-right">{order.amount} €</td>
         <td>{order.date}</td>
     </tr>;

@@ -10,8 +10,10 @@ import {
     showSuccessAlert,
     SuccessAlert
 } from "../../common/Alert";
+import {connect} from "react-redux";
+import {isLoggedIn} from "../../common/customerSession";
 
-class Product extends React.Component {
+class ProductComponent extends React.Component {
     constructor(props) {
         super(props);
 
@@ -20,21 +22,24 @@ class Product extends React.Component {
 
     state = {
         product: undefined,
-        userId: 12345678,
+        loading: false,
         alerts: {
             success: resetAlert(),
             error: resetAlert()
-        },
-        showSuccessAlert: false,
-        showErrorAlert: false
+        }
     };
 
     loadProduct = () => getProduct(this.props.match.params.id)
         .then(product => this.setState({product}));
 
-    addProduct = () => incrementCartItem(this.state.userId, this.state.product)
-        .then(this.showSuccessAlert)
-        .catch(this.showErrorAlert);
+    addProduct = () => {
+        this.setState({loading: true});
+
+        incrementCartItem(this.props.sessionCustomer.id, this.state.product)
+            .then(this.showSuccessAlert)
+            .catch(this.showErrorAlert)
+            .finally(() => this.setState({loading: false}));
+    };
 
     showSuccessAlert = () => this.setState({alerts: showSuccessAlert(this.state.alerts)});
 
@@ -43,6 +48,8 @@ class Product extends React.Component {
     hideSuccessAlert = () => this.setState({alerts: hideSuccessAlert(this.state.alerts)});
 
     hideErrorAlert = () => this.setState({alerts: hideErrorAlert(this.state.alerts)});
+
+    isLoggedIn = () => isLoggedIn(this.props.sessionCustomer);
 
     render() {
         const {product, alerts} = this.state;
@@ -72,6 +79,7 @@ class Product extends React.Component {
                             <div className="p-2">
                                 <button type="button"
                                         className="btn btn-primary"
+                                        disabled={this.state.loading || !this.isLoggedIn()}
                                         onClick={this.addProduct}>
                                     Add to cart
                                 </button>
@@ -84,5 +92,11 @@ class Product extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    ...state.sessionReducer
+});
+
+const Product = connect(mapStateToProps)(ProductComponent);
 
 export {Product};

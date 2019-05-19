@@ -11,6 +11,8 @@ import {
     showSuccessAlert,
     SuccessAlert
 } from "../../common/Alert";
+import {connect} from "react-redux";
+import {isLoggedIn} from "../../common/customerSession";
 
 const toMatrix = (array, numCols) => {
     if (!array)
@@ -34,7 +36,7 @@ const toMatrix = (array, numCols) => {
 
 };
 
-class Products extends React.Component {
+class ProductsComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -44,6 +46,7 @@ class Products extends React.Component {
 
     state = {
         products: [],
+        loading: false,
         alerts: {
             success: resetAlert(),
             error: resetAlert()
@@ -54,9 +57,14 @@ class Products extends React.Component {
         .then(products => this.setState({products}));
 
 
-    addProduct = product => incrementCartItem(12345678, product)
-        .then(this.showSuccessAlert)
-        .catch(this.showErrorAlert);
+    addProduct = product => {
+        this.setState({loading: true});
+
+        incrementCartItem(this.props.sessionCustomer.id, product)
+            .then(this.showSuccessAlert)
+            .catch(this.showErrorAlert)
+            .finally(() => this.setState({loading: false}));
+    };
 
     showSuccessAlert = () => this.setState({alerts: showSuccessAlert(this.state.alerts)});
 
@@ -65,6 +73,8 @@ class Products extends React.Component {
     hideSuccessAlert = () => this.setState({alerts: hideSuccessAlert(this.state.alerts)});
 
     hideErrorAlert = () => this.setState({alerts: hideErrorAlert(this.state.alerts)});
+
+    isLoggedIn = () => isLoggedIn(this.props.sessionCustomer);
 
     render() {
         const grid = toMatrix(this.state.products, 6);
@@ -86,6 +96,7 @@ class Products extends React.Component {
                         grid.map((gridRow, key) =>
                             <GridRow productsRow={gridRow}
                                      addProduct={this.addProduct}
+                                     disabled={this.state.loading || !this.isLoggedIn()}
                                      key={key}/>)
                     }
                 </div>
@@ -93,5 +104,11 @@ class Products extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    ...state.sessionReducer
+});
+
+const Products = connect(mapStateToProps)(ProductsComponent);
 
 export {Products};
