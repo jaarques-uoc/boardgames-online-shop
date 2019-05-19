@@ -13,6 +13,7 @@ import {signup} from "./sessionDAO";
 import {isLoggedIn} from "../../common/customerSession";
 import {saveSession} from "./sessionActions";
 import {connect} from "react-redux";
+import {validateEmail} from "../../common/emailValidation";
 
 class SignupComponent extends React.Component {
 
@@ -51,6 +52,7 @@ class SignupComponent extends React.Component {
         !!this.state.customer.fullName &&
         !!this.state.customer.address &&
         !!this.state.customer.country &&
+        validateEmail(this.state.customer.email) &&
         !this.isLoggedIn();
 
     showSuccessAlert = () => this.setState({alerts: showSuccessAlert(this.state.alerts)});

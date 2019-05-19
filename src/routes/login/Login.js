@@ -13,6 +13,7 @@ import {
 } from "../../common/Alert";
 import {isLoggedIn} from "../../common/customerSession";
 import {saveSession} from "./sessionActions";
+import {validateEmail} from "../../common/emailValidation";
 
 class LoginComponent extends React.Component {
 
@@ -44,6 +45,7 @@ class LoginComponent extends React.Component {
     validateForm = () => !!this.state.customer &&
         !!this.state.customer.email &&
         !!this.state.customer.password &&
+        validateEmail(this.state.customer.email) &&
         !this.isLoggedIn();
 
     showSuccessAlert = () => this.setState({alerts: showSuccessAlert(this.state.alerts)});
