@@ -25,8 +25,14 @@ class CartComponent extends React.Component {
         cart: undefined,
         loading: false,
         alerts: {
-            success: resetAlert(),
-            error: resetAlert()
+            createOrder: {
+                success: resetAlert(),
+                error: resetAlert()
+            },
+            updateItem: {
+                success: resetAlert(),
+                error: resetAlert()
+            }
         },
         order: {}
     };
@@ -40,7 +46,11 @@ class CartComponent extends React.Component {
         };
 
         updateCartItem(this.props.sessionCustomer.id, cartItem)
-            .then(this.saveCartState)
+            .then(cart => {
+                this.saveCartState(cart);
+                this.updateUpdateItemAlert(showSuccessAlert);
+            })
+            .catch(() => this.updateUpdateItemAlert(showErrorAlert))
             .finally(() => this.setState({loading: false}));
     };
 
@@ -61,34 +71,46 @@ class CartComponent extends React.Component {
         createOrder(this.state.cart, this.props.sessionCustomer.id)
             .then(order => {
                 this.setState({cart: {}, order});
-                this.showSuccessAlert();
+                this.updateCreateOrderAlert(showSuccessAlert);
             })
-            .catch(this.showErrorAlert)
+            .catch(() => this.updateCreateOrderAlert(showErrorAlert))
             .finally(() => this.setState({loading: false}));
     };
 
     isCartEmpty = () => !(this.state.cart && this.state.cart.orderItemDtos);
 
-    showSuccessAlert = () => this.setState({alerts: showSuccessAlert(this.state.alerts)});
+    updateCreateOrderAlert = alertFunction => this.updateAlert('createOrder', alertFunction);
 
-    showErrorAlert = () => this.setState({alerts: showErrorAlert(this.state.alerts)});
+    updateUpdateItemAlert = alertFunction => this.updateAlert('updateItem', alertFunction);
 
-    hideSuccessAlert = () => this.setState({alerts: hideSuccessAlert(this.state.alerts)});
+    updateAlert = (alertType, alertFunction) => {
+        const alerts = {...this.state.alerts};
 
-    hideErrorAlert = () => this.setState({alerts: hideErrorAlert(this.state.alerts)});
+        alerts[alertType] = alertFunction(this.state.alerts[alertType]);
+
+        this.setState({alerts: alerts});
+    };
 
     render() {
         const {alerts, order} = this.state;
 
         return (
             <React.Fragment>
-                {alerts.success.show &&
-                <SuccessAlert text={`(${alerts.success.count}) The order ${order.id} has been created successfully!`}
-                              hideAlert={this.hideSuccessAlert}/>
+                {alerts.createOrder.success.show &&
+                <SuccessAlert text={`(${alerts.createOrder.success.count}) The order ${order.id} has been created successfully!`}
+                              hideAlert={() => this.updateCreateOrderAlert(hideSuccessAlert)}/>
                 }
-                {alerts.error.show &&
-                <ErrorAlert text={`(${alerts.error.count}) The order has not been created due to an error.`}
-                            hideAlert={this.hideErrorAlert}/>
+                {alerts.createOrder.error.show &&
+                <ErrorAlert text={`(${alerts.createOrder.error.count}) The order has not been created due to an error.`}
+                            hideAlert={() => this.updateCreateOrderAlert(hideErrorAlert)}/>
+                }
+                {alerts.updateItem.success.show &&
+                <SuccessAlert text={`(${alerts.updateItem.success.count}) The cart has been updated successfully!`}
+                              hideAlert={() => this.updateUpdateItemAlert(hideSuccessAlert)}/>
+                }
+                {alerts.updateItem.error.show &&
+                <ErrorAlert text={`(${alerts.updateItem.error.count}) The cart has not been updated due to an error.`}
+                            hideAlert={() => this.updateUpdateItemAlert(hideErrorAlert)}/>
                 }
                 <div className="container content-padding">
                     <div className="row justify-content-center">
