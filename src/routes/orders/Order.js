@@ -1,8 +1,7 @@
 import React from 'react';
 import {OrderItem} from "../../common/OrderItem";
-import {getOrder} from "./ordersDAO";
+import {fetchOrderEvents, getOrder} from "./ordersDAO";
 import {sortOrderItems} from "../../common/sorting";
-import {Link} from "react-router-dom";
 
 class Order extends React.Component {
     constructor(props) {
@@ -12,10 +11,11 @@ class Order extends React.Component {
     }
 
     state = {
+        orderId: this.props.match.params.id,
         order: undefined
     };
 
-    loadOrder = () => getOrder(this.props.match.params.id)
+    loadOrder = () => getOrder(this.state.orderId)
         .then(order => {
             order.orderItemDtos = sortOrderItems(order.orderItemDtos);
             this.setState({order});
@@ -26,7 +26,7 @@ class Order extends React.Component {
             <div className="container content-padding">
                 <div className="row justify-content-center">
                     <div className="col-12">
-                        <h1>Order {this.props.match.params.id}</h1>
+                        <h1>Order {this.state.orderId}</h1>
                         {this.state.order && this.state.order.orderItemDtos &&
                         <table className="table">
                             <thead className="thead-light text-center">
@@ -52,35 +52,54 @@ class Order extends React.Component {
                             </tbody>
                         </table>
                         }
-                        <h4>Status</h4>
-                        {this.state.orderEvents &&
-                        <table className="table">
-                            <thead className="thead-light text-center">
-                            <tr>
-                                <th scope="col">Status</th>
-                                <th scope="col">Date</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {this.state.orderEvents.map((orderEvent, key) =>
-                                <tr className="text-center cart-item" key={`events_${key}`}>
-                                    <td>{orderEvent.status}</td>
-                                    <td>{orderEvent.eventDate}</td>
-                                </tr>
-                            )}
-                            <tr>
-                                <td colSpan="5" className="text-right">
-                                    {this.state.order.amount} €
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        }
+                        <OrderEvents orderId={this.state.orderId}/>
                     </div>
                 </div>
             </div>
         );
     }
+}
+
+class OrderEvents extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.loadOrderEvents();
+    }
+
+    state = {
+        orderEvents: undefined
+    };
+
+    loadOrderEvents = () => fetchOrderEvents(this.props.orderId)
+        .then(orderEvents => this.setState({orderEvents}));
+
+    render() {
+        return (
+            <React.Fragment>
+                <h4>Status</h4>
+                {this.state.orderEvents &&
+                <table className="table">
+                    <thead className="thead-light text-center">
+                    <tr>
+                        <th scope="col">Status</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.orderEvents.map((orderEvent, key) =>
+                        <tr className="text-center cart-item" key={`events_${key}`}>
+                            <td>{orderEvent.status}</td>
+                            <td>{orderEvent.date}</td>
+                        </tr>
+                    )}
+                    </tbody>
+                </table>
+                }
+            </React.Fragment>
+        );
+    }
+
 }
 
 export {Order};

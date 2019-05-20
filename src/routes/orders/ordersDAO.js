@@ -25,5 +25,11 @@ const createOrder = (order, customerId) => doPost(`${URLS.ORDERS_WS}/customers/$
         throw '';
     });
 
+const fetchOrderEvents = id => doGet(`${URLS.ORDERS_WS}/orders/${id}/events`)
+    .catch(e => {
+        console.log(`Error when retrieving order events for order ${id}: ${e}`);
+        throw '';
+    });
 
-export {fetchOrders, fetchCustomerOrders, getOrder, createOrder};
+
+export {fetchOrders, fetchCustomerOrders, getOrder, createOrder, fetchOrderEvents};

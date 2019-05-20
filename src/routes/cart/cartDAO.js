@@ -1,7 +1,7 @@
 import {doGet, doPost} from "../../common/helperDAO";
 import {URLS} from "../../common/urls";
 
-const getCartUrl = customerId => `${URLS.CARTS_WS}/customers/${customerId}/cart`;
+const getCartUrl = customerId => `${URLS.CARTS_WS}/customers/${customerId}/carts/current`;
 
 const getCart = customerId => doGet(getCartUrl(customerId))
     .catch(e => {
