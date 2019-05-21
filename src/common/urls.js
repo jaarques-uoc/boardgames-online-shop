@@ -1,8 +1,5 @@
-// Uncomment this line for localhost testing
-const API_GATEWAY_URL = 'http://localhost:7000';
-
-// Uncomment this line for heroku deployment
-// const API_GATEWAY_URL = 'https://api-gateway-ws.herokuapp.com';
+const API_GATEWAY_URL = process.env.NODE_ENV === 'production' ?
+    'https://api-gateway-ws.herokuapp.com' : 'http://localhost:7000';
 
 const URLS = {
     CUSTOMERS_WS: `${API_GATEWAY_URL}/customers-ws`,
