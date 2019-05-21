@@ -74,7 +74,7 @@ class ProductComponent extends React.Component {
                             <div className="mb-auto p-2">
                                 <h1 className="product-info-padding">{product.name}</h1>
                                 <h5 className="product-info-padding">{product.price} €</h5>
-                                <div>{product.description}</div>
+                                <div dangerouslySetInnerHTML={{ __html: product.description }} />
                             </div>
                             <div className="p-2">
                                 <button type="button"
