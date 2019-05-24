@@ -9,13 +9,13 @@ const getCart = customerId => doGet(getCartUrl(customerId))
         throw '';
     });
 
-const updateCartItem = (customerId, orderItem) => doPost(`${getCartUrl(customerId)}/item`, orderItem)
+const updateCartItem = (customerId, cartItem) => doPost(`${getCartUrl(customerId)}/items`, cartItem)
     .catch(e => {
         console.log(`Error when updating cart for user ${customerId}: ${e}`);
         throw '';
     });
 
-const incrementCartItem = (customerId, product) => doPost(`${getCartUrl(customerId)}/item/increment`, product)
+const incrementCartItem = (customerId, cartItem) => doPost(`${getCartUrl(customerId)}/items/increment`, cartItem)
     .catch(e => {
         console.log(`Error when updating cart for user ${customerId}: ${e}`);
         throw '';

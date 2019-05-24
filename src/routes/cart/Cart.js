@@ -97,8 +97,9 @@ class CartComponent extends React.Component {
         return (
             <React.Fragment>
                 {alerts.createOrder.success.show &&
-                <SuccessAlert text={`(${alerts.createOrder.success.count}) The order ${order.id} has been created successfully!`}
-                              hideAlert={() => this.updateCreateOrderAlert(hideSuccessAlert)}/>
+                <SuccessAlert
+                    text={`(${alerts.createOrder.success.count}) The order ${order.id} has been created successfully!`}
+                    hideAlert={() => this.updateCreateOrderAlert(hideSuccessAlert)}/>
                 }
                 {alerts.createOrder.error.show &&
                 <ErrorAlert text={`(${alerts.createOrder.error.count}) The order has not been created due to an error.`}
