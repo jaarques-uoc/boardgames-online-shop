@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
-import {login} from "./sessionDAO";
+import {login, login2} from "./sessionDAO";
 import {
     ErrorAlert,
     hideErrorAlert,
@@ -28,12 +28,22 @@ class LoginComponent extends React.Component {
         }
     };
 
-    login = () => login(this.state.customer)
-        .then(customer => {
-            this.props.saveSession(customer);
-            this.showSuccessAlert();
-        })
-        .catch(this.showErrorAlert);
+    login = () => {
+        const authenticationParams = {
+            username: 'user',//this.state.customer.email,
+            password: this.state.customer.password,
+            grant_type: 'password'
+        };
+
+        login(authenticationParams)
+            .then(authResponse => {
+                //this.props.saveSession(customer);
+                this.showSuccessAlert();
+            })
+            .catch(this.showErrorAlert);
+    };
+
+    loadUserInfo = () => {};
 
     onChange = event => this.setState({
         customer: {

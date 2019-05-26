@@ -1,11 +1,5 @@
-import {doPost} from "../../common/helperDAO";
+import {doPost, doPostWithQueryParams} from "../../common/helperDAO";
 import {URLS} from "../../common/urls";
-
-const login = customer => doPost(`${URLS.CUSTOMERS_WS}/login/`, customer)
-    .catch(e => {
-        console.log(`Error when loging in user ${customer.email}: ${e}`);
-        throw '';
-    });
 
 const signup = customer => doPost(`${URLS.CUSTOMERS_WS}/signup/`, customer)
     .catch(e => {
@@ -13,4 +7,10 @@ const signup = customer => doPost(`${URLS.CUSTOMERS_WS}/signup/`, customer)
         throw '';
     });
 
-export {login, signup};
+const login = authenticationParams => doPostWithQueryParams(`${URLS.AUTH_WS}/oauth/token`, authenticationParams)
+    .catch(e => {
+        console.log(`Error when loging in user ${authenticationParams.username}: ${e}`);
+        throw '';
+    });
+
+export {signup, login};

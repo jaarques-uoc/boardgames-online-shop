@@ -2,6 +2,7 @@ const API_GATEWAY_URL = process.env.NODE_ENV === 'production' ?
     'https://api-gateway-ws.herokuapp.com' : 'http://localhost:7000';
 
 const URLS = {
+    AUTH_WS: `${API_GATEWAY_URL}/auth-ws`,
     CUSTOMERS_WS: `${API_GATEWAY_URL}/customers-ws`,
     PRODUCTS_WS: `${API_GATEWAY_URL}/products-ws`,
     ORDERS_WS: `${API_GATEWAY_URL}/orders-ws`,
