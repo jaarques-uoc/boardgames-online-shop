@@ -2,17 +2,13 @@ language: node_js
 node_js:
   - "stable"
 
-cache:
-  directories:
-    - node_modules
+branches:
+  only:
+    - gh-pages
 
-script:
-  - CI=false npm run build
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: build
-  on:
-    branch: master
+after_success:
+  - git config --global user.name "Jordi"
+  - git config --global user.email "jaarques-uoc@github.com"
+  - git remote rm origin
+  - git remote add origin https://jaarques-uoc:${GITHUB_TOKEN}@github.com:jaarques-uoc/jaarques-uoc.github.io.git
+  - CI=false npm run deploy
