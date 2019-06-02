@@ -1,4 +1,4 @@
-# orders-ws [![Build Status](https://travis-ci.com/jaarques-uoc/orders-ws.svg?branch=master)](https://travis-ci.com/jaarques-uoc/orders-ws)
+# Frontend [![Build Status](https://travis-ci.com/jaarques-uoc/jaarques-uoc.github.io.svg?branch=gh-pages)](https://travis-ci.com/jaarques-uoc/jaarques-uoc.github.io)
 
 App URL: https://jaarques-uoc.github.io/
 
