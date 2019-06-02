@@ -20,6 +20,7 @@ class User extends React.Component {
 
         return (
             <div className="container content-padding">
+                <div>test2</div>
                 <div className="row justify-content-center">
                     <div className="col-12">
                         <h1>User {this.props.match.params.id}</h1>
