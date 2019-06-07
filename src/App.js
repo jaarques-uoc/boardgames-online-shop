@@ -1,6 +1,6 @@
 import {Products} from "./routes/products/Products";
 import React from "react";
-import {fetchSystemHealth} from "./common/SystemHealthDAO";
+import {fetchSystemHealth} from "./common/systemHealthDAO";
 import {Loading} from "./Loading";
 
 class App extends React.Component {
