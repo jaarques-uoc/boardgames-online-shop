@@ -11,4 +11,5 @@ script:
   - git config --global user.email "jaarques-uoc@github.com"
   - git remote rm origin
   - git remote add origin https://jaarques-uoc:${GITHUB_TOKEN}@github.com/jaarques-uoc/jaarques-uoc.github.io.git
+  - CI=false npm test
   - CI=false npm run deploy
