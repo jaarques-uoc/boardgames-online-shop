@@ -1,8 +1,7 @@
 import React from 'react';
-import {getCart, updateCartItem} from "./cartDAO";
+import {checkoutCart, getCart, updateCartItem} from "./cartDAO";
 import {OrderItem} from "../../common/OrderItem";
 import {sortOrderItems} from "../../common/sorting";
-import {createOrder} from "../orders/ordersDAO";
 import {
     ErrorAlert,
     hideErrorAlert,
@@ -68,7 +67,7 @@ class CartComponent extends React.Component {
     createOrder = () => {
         this.setState({loading: true});
 
-        createOrder(this.state.cart, this.props.sessionCustomer.id)
+        checkoutCart(this.props.sessionCustomer.id)
             .then(order => {
                 this.setState({cart: {}, order});
                 this.updateCreateOrderAlert(showSuccessAlert);

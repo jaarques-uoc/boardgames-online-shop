@@ -21,4 +21,10 @@ const incrementCartItem = (customerId, cartItem) => doPost(`${getCartUrl(custome
         throw '';
     });
 
-export {getCart, updateCartItem, incrementCartItem};
+const checkoutCart = customerId => doPost(`${URLS.CARTS_WS}/customers/${customerId}/carts/current/checkout`, {})
+    .catch(e => {
+        console.log(`Error during checkout for user ${customerId}: ${e}`);
+        throw '';
+    });
+
+export {getCart, updateCartItem, incrementCartItem, checkoutCart};
