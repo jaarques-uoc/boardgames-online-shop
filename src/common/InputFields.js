@@ -20,4 +20,15 @@ const FieldInput = ({fieldName, label, type, placeholder, onChange, disabled}) =
         </div>
     </div>;
 
-export {TextInput, PasswordInput};
+const TextAreaInput = ({fieldName, label, onChange, disabled}) =>
+    <div className="form-group row">
+        <label htmlFor={fieldName} className="col-sm-3 col-form-label">{label}</label>
+        <div className="col-sm-9">
+            <textarea className="form-control"
+                      id={fieldName}
+                      onChange={onChange}
+                      disabled={disabled}/>
+        </div>
+    </div>;
+
+export {TextInput, PasswordInput, TextAreaInput};

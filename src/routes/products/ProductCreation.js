@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput} from "../../common/InputFields";
+import {TextAreaInput, TextInput} from "../../common/InputFields";
 import {
     ErrorAlert,
     hideErrorAlert,
@@ -80,10 +80,10 @@ class ProductCreationComponent extends React.Component {
                                            label="Name"
                                            disabled={alerts.success.show}
                                            onChange={this.onChange}/>
-                                <TextInput fieldName="description"
-                                           label="Description"
-                                           disabled={alerts.success.show}
-                                           onChange={this.onChange}/>
+                                <TextAreaInput fieldName="description"
+                                               label="Description"
+                                               disabled={alerts.success.show}
+                                               onChange={this.onChange}/>
                                 <TextInput fieldName="price"
                                            label="Price (in €)"
                                            disabled={alerts.success.show}
