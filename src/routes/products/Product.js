@@ -77,12 +77,14 @@ class ProductComponent extends React.Component {
                                 <div dangerouslySetInnerHTML={{ __html: product.description }} />
                             </div>
                             <div className="p-2">
-                                <button type="button"
-                                        className="btn btn-primary"
-                                        disabled={this.state.loading || !this.isLoggedIn()}
-                                        onClick={this.addProduct}>
-                                    Add to cart
-                                </button>
+                                {this.isLoggedIn() && 
+                                    <button type="button"
+                                            className="btn btn-primary"
+                                            disabled={this.state.loading || !this.isLoggedIn()}
+                                            onClick={this.addProduct}>
+                                        Add to cart
+                                    </button>
+                                }
                             </div>
                         </div>
                     </div>

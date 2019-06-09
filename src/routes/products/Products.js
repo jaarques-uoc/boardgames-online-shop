@@ -96,7 +96,8 @@ class ProductsComponent extends React.Component {
                         grid.map((gridRow, key) =>
                             <GridRow productsRow={gridRow}
                                      addProduct={this.addProduct}
-                                     disabled={this.state.loading || !this.isLoggedIn()}
+                                     disabled={this.state.loading}
+                                     show={this.isLoggedIn()}
                                      key={key}/>)
                     }
                 </div>
