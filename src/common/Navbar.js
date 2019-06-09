@@ -16,6 +16,9 @@ const NavbarComponent = ({sessionCustomer}) =>
                     <li className="nav-item">
                         <Link className="nav-link" to="/orders">All customer orders</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/products/create">Create Product</Link>
+                    </li>
                 </React.Fragment>
                 }
                 {isLoggedIn(sessionCustomer) &&

@@ -19,6 +19,7 @@ import {AllOrders} from "./routes/orders/AllOrders";
 import {Provider} from 'react-redux'
 import {configureStore} from './store';
 import {Logout} from "./routes/login/Logout";
+import {ProductCreation} from "./routes/products/ProductCreation";
 
 const routing = (
     <Router>
@@ -33,6 +34,7 @@ const routing = (
             <Route path="/myOrders" component={MyOrders}/>
             <Route path="/users/:id" component={User}/>
             <Route path="/users" component={Users}/>
+            <Route path="/products/create" component={ProductCreation}/>
             <Route path="/products/:id" component={Product}/>
             <Route exact path="/" component={App}/>
             <Route component={Error404}/>
