@@ -10,12 +10,12 @@ const GridItem = ({product, addProduct, disabled, show}) =>
             <LinkToProduct id={product.id}>{product.name}</LinkToProduct>
             <div>{product.price} €</div>
             {show &&
-                <button type="button"
-                        className="btn btn-primary"
-                        disabled={disabled}
-                        onClick={() => addProduct(product)}
-                >Add to cart
-                </button>
+            <button type="button"
+                    className="btn btn-primary"
+                    disabled={disabled}
+                    onClick={() => addProduct(product)}
+            >Add to cart
+            </button>
             }
         </div>
     </div>;

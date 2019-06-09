@@ -74,16 +74,16 @@ class ProductComponent extends React.Component {
                             <div className="mb-auto p-2">
                                 <h1 className="product-info-padding">{product.name}</h1>
                                 <h5 className="product-info-padding">{product.price} €</h5>
-                                <div dangerouslySetInnerHTML={{ __html: product.description }} />
+                                <div dangerouslySetInnerHTML={{__html: product.description}}/>
                             </div>
                             <div className="p-2">
-                                {this.isLoggedIn() && 
-                                    <button type="button"
-                                            className="btn btn-primary"
-                                            disabled={this.state.loading || !this.isLoggedIn()}
-                                            onClick={this.addProduct}>
-                                        Add to cart
-                                    </button>
+                                {this.isLoggedIn() &&
+                                <button type="button"
+                                        className="btn btn-primary"
+                                        disabled={this.state.loading || !this.isLoggedIn()}
+                                        onClick={this.addProduct}>
+                                    Add to cart
+                                </button>
                                 }
                             </div>
                         </div>

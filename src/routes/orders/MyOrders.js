@@ -4,7 +4,7 @@ import {fetchCustomerOrders} from "./ordersDAO";
 import {connect} from "react-redux";
 
 const MyOrdersComponent = ({sessionCustomer}) => <Orders fetchOrders={() => fetchCustomerOrders(sessionCustomer.id)}
-                               title='My orders'/>;
+                                                         title='My orders'/>;
 
 
 const mapStateToProps = state => ({
